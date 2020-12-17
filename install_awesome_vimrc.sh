@@ -13,6 +13,17 @@ source ~/.vim_runtime/vimrcs/extended.vim
 try
 source ~/.vim_runtime/my_configs.vim
 catch
-endtry' > ~/.vimrc
+endtry
+
+set nu
+set clipboard=unnamed
+
+autocmd VimEnter * NERDTree
+autocmd BufEnter * NERDTreeMirror
+
+autocmd VimEnter * wincmd w
+
+" 退出编辑窗口时自动退出附加窗口
+autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), \'empty(getbufvar(winbufnr(v:val), "&bt"))\')) | qa! | endif' > ~/.vimrc
 
 echo "Installed the Ultimate Vim configuration successfully! Enjoy :-)"
